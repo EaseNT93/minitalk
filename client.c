@@ -16,7 +16,7 @@ void	ft_send_char(int c, int pid)
 			kill_ret = kill(pid, SIGUSR2);
 		if (kill_ret == -1)
 		{
-			write(2, "Signal error\n", 13);
+			write(1, "Signal error\n", 13);
 			exit(1);
 		}
 		usleep(75);
@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 3)
 	{
-		write(2, "Try: ./client \"PID\" \"Message\"\n", 30);
+		write(1, "Try: ./client \"PID\" \"Message\"\n", 30);
 		exit(1);
 	}
 	else

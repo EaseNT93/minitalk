@@ -11,7 +11,7 @@ void	ft_get_char(int signal)
 	if (signal == SIGUSR1)
 		i = i + (1 << len++);
 	if (signal == SIGUSR2)
-		i = i + (0 << len++);
+		len++;
 	if (len == 8)
 	{
 		c = (char)i;
@@ -27,16 +27,6 @@ void	ft_putnbr(int n)
 {
 	char	c;
 
-	if (n == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return ;
-	}
-	if (n < 0)
-	{
-		write(1, "-", 1);
-		n = -n;
-	}
 	if (n > 9)
 	{
 		ft_putnbr(n / 10);
@@ -61,7 +51,5 @@ int	main(void)
 	signal(SIGUSR1, ft_get_char);
 	signal(SIGUSR2, ft_get_char);
 	while (1)
-	{
 		pause();
-	}
 }
